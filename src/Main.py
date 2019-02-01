@@ -1,5 +1,6 @@
 import pickle
 import TourismClassification
+import numpy as np
 
 
 def user_interaction():
@@ -26,15 +27,12 @@ def classify_data_entry():
     print("Enter the sort attributes")
     print("in the order you requested\n")
     print("################################\n\n")
-    att = []
 
-    print("Atributo x: ")
-    att[0] = input()
-    print("Atributo y: ")
-    att[1] = input()
 
-    model = pickle.load(open('../model_classification/classification_model.sav', 'rb'))
-    predictions = model.predict(att)
+    #att = [6,0,2,1,0,1,1,1,0,0,1,1,0,2,2,0,0,0,1,1,3,1,1,1,0,0,0,0,4,0,0,0,0,0,0]
+    model = pickle.load(open('../classification_model/classification_model.sav', 'rb'))
+    #predictions = model.predict(att)
+    #print(predictions)
 
 
 def run_selection_algorithm():
