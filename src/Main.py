@@ -1,8 +1,8 @@
 import pickle
-import SoybeanClassification
-import numpy as np
+
 import pandas
 
+import SoybeanClassification
 
 
 def user_interaction():
@@ -11,7 +11,7 @@ def user_interaction():
         print("-> Do you want to enter with attributes to classify ")
         print("or run again the algorithm selection and save model?\n")
         print("##########################################################\n")
-        print("1 - Attributes")
+        print("1 - Classify New Entries")
         print("2 - Selection Algorithm")
         print("3 - Exit")
         option = input()
