@@ -1,7 +1,7 @@
 from __future__ import print_function
 import pandas
 from sklearn import model_selection
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
@@ -29,7 +29,7 @@ def run():
     dtc = DecisionTreeClassifier()
     mlp = MLPClassifier(random_state=seed, solver='lbfgs')
     nb = GaussianNB()
-    svc = SVC(kernel='poly')
+    svc = SVC(kernel='poly', gamma="auto")
 
     # Make predictions on validation dataset
     knn.fit(x_train, y_train)
@@ -68,6 +68,10 @@ def run():
     if accuracy_aux > accuracy:
         algorithm = svc
         algorithm_chosen = "SVM"
+
+    print(accuracy_score(y_validation, predictions))
+    print(confusion_matrix(y_validation, predictions))
+    print(classification_report(y_validation, predictions))
 
     print("\nAlgorithm Chosen: " + algorithm_chosen)
     print("Accuracy: %f" % accuracy)

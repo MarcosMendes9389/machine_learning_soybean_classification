@@ -1,6 +1,8 @@
 import pickle
-import TourismClassification
+import SoybeanClassification
 import numpy as np
+import pandas
+
 
 
 def user_interaction():
@@ -28,15 +30,31 @@ def classify_data_entry():
     print("in the order you requested\n")
     print("################################\n\n")
 
-
-    #att = [6,0,2,1,0,1,1,1,0,0,1,1,0,2,2,0,0,0,1,1,3,1,1,1,0,0,0,0,4,0,0,0,0,0,0]
     model = pickle.load(open('../classification_model/classification_model.sav', 'rb'))
-    #predictions = model.predict(att)
-    #print(predictions)
+    new_entries = load_data_set().values
+    x = new_entries[:, 0:34]
+
+    predictions = model.predict(x)
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+    print(">>>> New Entries Classification: >>>>>>\n")
+    print(predictions)
+    print("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+
+
+def load_data_set():
+    url = "../data/new_entries.data"
+    names = ['date', 'plant-stand', 'precip', 'temp', 'hail', 'crop-hist', 'area-damaged',
+             'severity', 'seed-tmt', 'germination', 'plant-growth',
+             'leaves', 'leafspots-halo', 'leafspots-marg', 'leafspot-size', 'leaf-shread', 'leaf-malf',
+             'leaf-mild', 'stem', 'lodging', 'stem-cankers', 'canker-lesion', 'fruiting-bodies',
+             'external decay', 'mycelium', 'int-discolor', 'sclerotia', 'fruit-pods', 'fruit spots',
+             'seed', 'mold-growth', 'seed-discolor', 'seed-size', 'shriveling', 'roots']
+    dataset = pandas.read_csv(url, names=names)
+    return dataset
 
 
 def run_selection_algorithm():
-    TourismClassification.run()
+    SoybeanClassification.run()
 
 
 if __name__ == '__main__':
