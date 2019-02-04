@@ -5,8 +5,8 @@
 #### I - Execute Main.py
 
 #### II - It'll show at terminal 3 options: 
-  1- Classify New Entries
-  2 - Selection Algorithm
+  1- Classify New Entries;
+  2 - Selection Algorithm;
   3 - Exit
 
 #### III - Option 1- Classify New Entries
