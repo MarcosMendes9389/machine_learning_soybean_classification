@@ -69,12 +69,12 @@ def run():
         algorithm = svc
         algorithm_chosen = "SVM"
 
+    print("\nAlgorithm Chosen: " + algorithm_chosen)
+    print("Accuracy: %f" % accuracy)
     print(accuracy_score(y_validation, predictions))
     print(confusion_matrix(y_validation, predictions))
     print(classification_report(y_validation, predictions))
 
-    print("\nAlgorithm Chosen: " + algorithm_chosen)
-    print("Accuracy: %f" % accuracy)
     save_model(algorithm)
 
 
